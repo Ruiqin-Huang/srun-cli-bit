@@ -1,0 +1,19 @@
+[Unit]
+Description=SRUN Cli Bit Auto Login Service
+# Ensure network is fully up before starting
+After=network-online.target systemd-networkd-wait-online.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=yourusername
+# Startup directory
+WorkingDirectory=/path/to/project
+# Command to execute
+ExecStart=/bin/bash /path/to/project/auto_login.sh
+# Restart configuration
+Restart=always
+RestartSec=60
+
+[Install]
+WantedBy=multi-user.target
