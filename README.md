@@ -78,9 +78,9 @@ To ensure the network is automatically logged in when the computer starts and ke
    ```
 
 3. **Copy Service File**:
-   Copy the provided `srun-login.service` file to the systemd directory.
+   Copy the provided `srun-login.service` file to the systemd directory (force overwrite if exists).
    ```bash
-   sudo cp /path/to/project/srun-login.service /etc/systemd/system/
+   sudo cp -f /path/to/project/srun-login.service /etc/systemd/system/
    ```
 
 4. **Reload Systemd**:
