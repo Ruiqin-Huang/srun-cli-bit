@@ -31,24 +31,19 @@ Download binary file from GitHub  [release page](https://github.com/c-my/srun-cl
 
 **_Windows binary version NOT works on Windows7_**
 
+## FAQ
+
+### Why does the login expire after about 2 hours?
+This tool performs a one-time login action and then exits. It does not run in the background to send "heartbeat" packets to the server. Most campus network systems have session timeouts (idle or hard limits). Since this tool does not actively maintain the session (keep-alive), the server may disconnect you after a certain period of inactivity or session duration. You will need to run the login command again.
+
+### Where are credentials stored and is it safe?
+The credentials (username and password) configured via `config` command are stored in your user home directory in a file named `.bitsrun` (e.g., `~/.bitsrun` on Linux or `C:\Users\YourName\.bitsrun` on Windows).
+
+**Safety Warning**: The credentials are stored using Base64 encoding, which is **NOT encryption**. It effectively obfuscates the text but anyone with access to the file can easily decode it to retrieve your username and password. Do not use this on a shared computer without proper file permissions.
+
 ## Thanks to
 
 [https://github.com/vouv/srun](https://github.com/vouv/srun)
 
 [Nuitka](https://nuitka.net/)
-
-## 常见问题
-
-### 1. 为什么登录状态会过期？
-
-本工具只负责执行登录和注销操作，并未实现任何会话保持（Keep-Alive）或自动重新登录的功能。登录状态在约两小时后过期是由**校园网认证服务器的策略**决定的，并非本工具的设定。这是一种常见的网络管理措施，旨在提高网络安全性和资源利用率。当会话过期后，您需要手动再次执行 `login` 命令以重新连接。
-
-### 2. 账号和密码存储在哪里？是否安全？
-
-当您使用 `config` 命令设置账号和密码时，这些信息会以**未加密的纯文本形式**保存在您系统用户主目录下的一个名为 `.srun.json` 的隐藏文件中。
-
--   在 Linux 和 macOS 上，路径通常是 `~/.srun.json`。
--   在 Windows 上，路径通常是 `C:\Users\YourUsername\.srun.json`。
-
-由于凭据是以纯文本形式存储的，任何能够访问此文件的用户或程序都可以轻易读取到您的账号和密码。**这存在一定的安全风险**，请确保您的用户主目录具有适当的访问权限控制。
 
