@@ -77,7 +77,7 @@ To ensure the network is automatically logged in when the computer starts and ke
    chmod +x /path/to/project/bin/srun-bit-windows-linux.bin
 
    # Set account ID and Password
-   chmod +x /path/to/project/bin/srun-bit-windows-linux.bin config
+   /path/to/project/bin/srun-bit-windows-linux.bin config
    ```
 
 3. **Copy Service File**:
